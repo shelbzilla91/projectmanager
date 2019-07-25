@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, {Component} from 'react';
+import Projects from './components/projects';
+import AddProject from './components/AddProject';
+class App extends Component{
+  constructor(){
+    super();
+    this.state = {
+      projects:[]
+        
+    }
+  }
+  componentWillMount(){
+    this.setState({projects:[
+      {
+      title:'Business Website',
+      category: 'Web Design'
+    },
+    {
+      title:'Social App',
+      category: 'Mobile Development'
+    },
+    {
+      title:'Ecommerce Shopping Cart',
+      category: 'Web Development'
+    },
+  ]});
+    
+  }
+  render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddProject/>
+      <Projects projects = {this.state.projects}/>
     </div>
   );
 }
+}
+
 
 export default App;
